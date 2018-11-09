@@ -15,12 +15,15 @@
 		function index(){
 			//pada class ini (controller), akses variabel model, akses fungsi selectAll (kalo bingung lihat di class model ada fungsi selectAll)
 			//panggil model fungsi selectall
+			$data = $this->model->selectAll();
 			include "view/view.php"; //memamnggil view.php pada folder view
 		}
 		
 		function viewEdit($nim){
+			$data = $this->model->selectMhs($nim);
+			$row = $this->model->fetch($data);
 			//panggil model select data mahasiswa dengan nim ...
-			$row = $this->model->fetch($data); //fetch hasil select
+			 //fetch hasil select
 			include "view/view_edit.php"; //menampilkan halaman untuk mengedit data
 		}
 		
@@ -37,11 +40,13 @@
 			$prodi = $_POST['prodi'];
 			
 			//panggil model update mahasiswa
+			$this->model->updateMhs($nim, $nama, $angkatan, $fakultas, $prodi);
 			header("location:index.php");
 		}
 		
 		function delete($nim){
 			//panggil model delete data mahasiswa dengan nim ...
+			$this->model->deleteMhs($nim);
 			header("location:index.php");
 		}
 		
@@ -53,6 +58,7 @@
 			$prodi = $_POST['prodi'];
 			
 			//panggil model insert mahasiswa
+			$this->model->insertMhs($nim, $nama, $angkatan, $fakultas, $prodi);
 			header("location:index.php");
 		}
 		

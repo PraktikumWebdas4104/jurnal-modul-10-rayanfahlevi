@@ -40,6 +40,7 @@
 <?php
 	if(isset($_POST['submit'])){ //jika button submit diklik maka panggil fungsi update pada controller
 		$main = new controller();
+		$main->update($nim);
 		//panggil controller update
 	}
 ?>

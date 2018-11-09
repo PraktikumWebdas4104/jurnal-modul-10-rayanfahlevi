@@ -40,6 +40,7 @@
 <?php
 	if(isset($_POST['submit'])){ //jika button submit diklik maka panggil fungsi insert pada controller
 		$main = new controller();
+		$main-> insert();
 		//panggil controller insert
 	}
 ?>
